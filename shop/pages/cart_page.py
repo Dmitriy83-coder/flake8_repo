@@ -5,8 +5,6 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class CartPage:
     """Page Object для страницы корзины"""
-
-    # Локаторы
     CHECKOUT_BUTTON = (By.CSS_SELECTOR, "[data-test='checkout']")
     CART_ITEMS = (By.CLASS_NAME, "cart_item")
     ITEM_NAME = (By.CLASS_NAME, "inventory_item_name")
@@ -17,7 +15,6 @@ class CartPage:
         self.wait = WebDriverWait(driver, 10)
 
     def click_checkout(self):
-        """Нажать кнопку Checkout"""
         checkout_button = self.wait.until(
             EC.element_to_be_clickable(self.CHECKOUT_BUTTON)
         )
@@ -29,7 +26,7 @@ class CartPage:
         return len(items)
 
     def get_cart_item_names(self):
-        """Получить список названий товаров в корзине"""
+        """Получить список названий товаров"""
         items = self.driver.find_elements(*self.CART_ITEMS)
         names = []
         for item in items:
@@ -38,7 +35,7 @@ class CartPage:
         return names
 
     def get_cart_item_prices(self):
-        """Получить список цен товаров в корзине"""
+        """Получить список цен"""
         items = self.driver.find_elements(*self.CART_ITEMS)
         prices = []
         for item in items:
