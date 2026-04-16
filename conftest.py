@@ -18,8 +18,7 @@ def chrome_driver():
     driver = webdriver.Chrome(options=options)
     driver.implicitly_wait(5)
     
-    yield driver
-    
+    yield driver    
     driver.quit()
 
 
@@ -33,6 +32,5 @@ def firefox_driver():
     driver = webdriver.Firefox(options=options)
     driver.implicitly_wait(5)
     
-    yield driver
-    
+    yield driver    
     driver.quit()
