@@ -4,7 +4,6 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class CartPage:
-    """Page Object для страницы корзины"""
     CHECKOUT_BUTTON = (By.CSS_SELECTOR, "[data-test='checkout']")
     CART_ITEMS = (By.CLASS_NAME, "cart_item")
     ITEM_NAME = (By.CLASS_NAME, "inventory_item_name")
@@ -21,12 +20,10 @@ class CartPage:
         checkout_button.click()
 
     def get_cart_items_count(self):
-        """Получить количество товаров в корзине"""
         items = self.driver.find_elements(*self.CART_ITEMS)
         return len(items)
 
     def get_cart_item_names(self):
-        """Получить список названий товаров"""
         items = self.driver.find_elements(*self.CART_ITEMS)
         names = []
         for item in items:
@@ -35,7 +32,6 @@ class CartPage:
         return names
 
     def get_cart_item_prices(self):
-        """Получить список цен"""
         items = self.driver.find_elements(*self.CART_ITEMS)
         prices = []
         for item in items:
