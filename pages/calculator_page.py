@@ -4,7 +4,6 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class CalculatorPage:
-    """Page Object для страницы калькулятора"""
     DELAY_INPUT = (By.CSS_SELECTOR, "#delay")
     BUTTONS = (By.XPATH, "//span[text()='{}']")
     SCREEN = (By.CSS_SELECTOR, ".screen")
