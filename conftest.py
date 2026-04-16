@@ -5,14 +5,13 @@ from selenium.webdriver.firefox.options import Options as FirefoxOptions
 
 
 def pytest_configure(config):
-    """Регистрация маркеров"""
     config.addinivalue_line("markers", "calculator: tests for calculator")
     config.addinivalue_line("markers", "shop: tests for online shop")
 
 
 @pytest.fixture(scope="function")
 def chrome_driver():
-    """Фикстура для Chrome (калькулятор)"""
+    """для Chrome (калькулятор)"""
     options = Options()
     options.add_argument("--start-maximized")
     
@@ -26,7 +25,7 @@ def chrome_driver():
 
 @pytest.fixture(scope="function")
 def firefox_driver():
-    """Фикстура для Firefox (магазин)"""
+    """для Firefox (магазин)"""
     options = FirefoxOptions()
     options.add_argument("--width=1920")
     options.add_argument("--height=1080")
