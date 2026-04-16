@@ -50,6 +50,5 @@ class CheckoutPage:
             EC.visibility_of_element_located(self.TOTAL_LABEL)
         )
         total_text = total_element.text
-        #  "Total: $58.29"
         total_amount = total_text.split("$")[1]
         return f"${total_amount}"
