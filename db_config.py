@@ -7,4 +7,10 @@ DB_CONFIG = {
     'password': '12345'
 }
 
-CONNECTION_STRING = f"postgresql://postgres:12345@127.0.0.1:5432/QA-Testing"
+CONNECTION_STRING = "postgresql://{}:{}@{}:{}/{}".format(
+    DB_CONFIG['user'],
+    DB_CONFIG['password'],
+    DB_CONFIG['host'],
+    DB_CONFIG['port'],
+    DB_CONFIG['database']
+)
