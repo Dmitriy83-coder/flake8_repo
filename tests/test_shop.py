@@ -32,27 +32,27 @@ class TestShop:
         Args:
             driver: Фикстура WebDriver
         """
-        # Шаг 1: Создание объектов страниц
+        # Создание объектов страниц
         with allure.step("Инициализация Page Object классов"):
             login_page = LoginPage(driver)
             inventory_page = InventoryPage(driver)
             cart_page = CartPage(driver)
             checkout_page = CheckoutPage(driver)
 
-        # Шаг 2: Открытие сайта и авторизация
+        # Открытие сайта и авторизация
         with allure.step("Открытие страницы авторизации"):
             login_page.open()
 
         with allure.step("Авторизация пользователем 'standard_user'"):
             login_page.login("standard_user", "secret_sauce")
 
-        # Шаг 3: Добавление товаров в корзину
+        # Добавление товаров в корзину
         items = ["Sauce Labs Backpack", "Sauce Labs Bolt T-Shirt", "Sauce Labs Onesie"]
         for item in items:
             with allure.step(f"Добавление товара '{item}' в корзину"):
                 inventory_page.add_item_to_cart(item)
 
-        # Шаг 4: Переход в корзину
+        # Переход в корзину
         with allure.step("Переход в корзину"):
             inventory_page.go_to_cart()
 
