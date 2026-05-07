@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.egg-info/
+*.egg
+dist/
+build/
+
+.pytest_cache/
+.pytest_cache/
+*.pytest_cache
+
+# Allure
+allure-results/
+allure-report/
+allure-results-html/
+
+# Chrome profile (локальные данные браузера)
+chrome_profile/
+*.crx
+*.pem
+
+# Selenium
+geckodriver.log
+chromedriver.log
+*.log
+
+# IDE (PyCharm, VSCode)
+.vscode/
+.idea/
+*.iml
+*.swp
+*.swo
+*~
+.DS_Store
+Desktop.ini
+
+# токены и пароли
+.env
+.env.local
+.env.*.local
+
+.wdm/
+webdriver_manager/
+
+tmp/
+temp/
+*.tmp
+*.bak
+*.cache
+
+Thumbs.db
+ehthumbs.db
+*.ds_store
+.DS_Store
