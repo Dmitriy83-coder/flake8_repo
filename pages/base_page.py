@@ -1,3 +1,4 @@
+from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -103,10 +104,10 @@ class BasePage:
             attachment_type=allure.attachment_type.PNG
         )
 
-        def find_element_with_timeout(self, by, value, timeout=10):
-            """Найти элемент с кастомным таймаутом"""
-            from selenium.webdriver.support.ui import WebDriverWait
-            from selenium.webdriver.support import expected_conditions as EC
+    def find_element_with_timeout(self, by, value, timeout=10):
+        """Найти элемент с кастомным таймаутом"""
+        from selenium.webdriver.support.ui import WebDriverWait
+        from selenium.webdriver.support import expected_conditions as EC
 
-            wait = WebDriverWait(self.driver, timeout)
-            return wait.until(EC.presence_of_element_located((by, value)))
+        wait = WebDriverWait(self.driver, timeout)
+        return wait.until(EC.presence_of_element_located((by, value)))
