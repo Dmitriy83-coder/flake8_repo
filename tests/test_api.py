@@ -58,13 +58,16 @@ class TestKinopoiskAPI:
             assert film.year == TestData.FILM_YEAR
 
     @allure.title("Запрос фильма с несуществующим годом")
+    @allure.severity(allure.severity_level.MINOR)
     def test_film_with_nonexistent_year(self, api_client):
+        """Проверяем обработку запроса с несуществующим годом"""
         year = TestData.NON_EXISTENT_YEAR
 
         with allure.step(f"Выполнить запрос с годом {year}"):
-            response = api_client.filter_by_year_no_raise(year=year, limit=10)  # ← новый метод
+            response = api_client.filter_by_year_no_raise(year=year, limit=10)
 
-        with allure.step("Проверить, что API вернул 400 или 200"):
+        with allure.step("Проверить, что API вернул 400 (Bad Request) или 200 с пустым списком"):
+            # 2065 год не существует → API должен вернуть 400
             assert response.status_code in [200, 400]
 
     @allure.title("Фильтрация фильмов по году выпуска")
@@ -112,18 +115,6 @@ class TestKinopoiskAPI:
             for film in response.docs:
                 assert film.year == year
 
-    @allure.title("Запрос фильма с несуществующим годом")
-    @allure.severity(allure.severity_level.MINOR)
-    def test_film_with_nonexistent_year(self, api_client):
-        """Проверяем обработку запроса с несуществующим годом"""
-        year = TestData.NON_EXISTENT_YEAR
-
-        with allure.step(f"Выполнить запрос с годом {year}"):
-            response = api_client.filter_by_year_no_raise(year=year, limit=10)
-
-        with allure.step("Проверить, что API вернул 400 (Bad Request) или 200 с пустым списком"):
-            # 2065 год не существует → API должен вернуть 400
-            assert response.status_code in [200, 400]
 
     @allure.title("Поиск фильма с рейтингом выше 10 (невалидный запрос)")
     @allure.severity(allure.severity_level.MINOR)
